@@ -5,10 +5,8 @@ const constraints = {
 };
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
-canvas.width = width;
-canvas.height = height;
 
-var streaming, src, dist, cap;
+var streaming, src, dist, cap, width, height;
 
 function setSize() {
 	if (window.orientation == 0) {
@@ -20,6 +18,8 @@ function setSize() {
 		width = 640;
 		height = 480;
 	}
+	canvas.width = width;
+	canvas.height = height;
 }
 
 
