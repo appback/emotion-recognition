@@ -1,7 +1,3 @@
-window.onload = function () {
-
-};
-
 function setSize() {
 	if (window.orientation == 0) {
 		//portrait

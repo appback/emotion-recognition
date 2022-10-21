@@ -2,16 +2,13 @@
 <html>
 	<head>
 		<title>감정인식</title>
-		<script async src="script.js"></script>
+		<script src="script.js"></script>
 		<script async src="https://docs.opencv.org/3.4/opencv.js"></script>
 	</head>
-	<!--script async src="./opencv.js"></script-->
 
 	<body onload="setSize()">
 		<button id="toggleStream" onclick="toggleStream()">Play</button>
-		<button id="cvtGray" onclick="cvtGray()" style="visibility: hidden;">
-			Convert to Gray
-		</button>
+		<button id="cvtGray" onclick="cvtGray()" style="visibility: hidden;">Gray</button>
 		<br />
 		<br />
 		<video id="video"></video>
