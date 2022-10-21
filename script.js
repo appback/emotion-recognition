@@ -5,15 +5,14 @@ const constraints = {
 };
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
-
+var stream;
+var tracks;
 var streaming = false;
 var width = 0;
 var height = 0;
 var src, dist, cap;
 
 function setSize() {
-	var width = 0;
-	var height = 0;
 	if (window.orientation == 0) {
 		//portrait
 		width = 480;
@@ -25,7 +24,6 @@ function setSize() {
 	}
 	canvas.width = width;
 	canvas.height = height;
-	var streaming = false;
 }
 
 
@@ -47,8 +45,8 @@ function toggleStream() {
 		document.getElementById('cvtGray').style.visibility = 'visible';
 		streaming = true;
 	} else {
-		const stream = video.srcObject;
-		const tracks = stream.getTracks();
+		stream = video.srcObject;
+		tracks = stream.getTracks();
 		tracks.forEach((track) => {
 			track.stop();
 		});
@@ -60,9 +58,9 @@ function toggleStream() {
 }
 
 function cvtGray() {
-	var src = new cv.Mat(height, width, cv.CV_8UC4);
-	var dst = new cv.Mat(height, width, cv.CV_8UC1);
-	var cap = new cv.VideoCapture('video');
+	src = new cv.Mat(height, width, cv.CV_8UC4);
+	dst = new cv.Mat(height, width, cv.CV_8UC1);
+	cap = new cv.VideoCapture('video');
 	setTimeout(process, 33);
 }
 
