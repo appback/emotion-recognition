@@ -6,9 +6,14 @@ const constraints = {
 const video = document.getElementById('video');
 const canvas = document.getElementById('output');
 
-var streaming, src, dist, cap, width, height;
+var streaming = false;
+var width = 0;
+var height = 0;
+var src, dist, cap;
 
 function setSize() {
+	var width = 0;
+	var height = 0;
 	if (window.orientation == 0) {
 		//portrait
 		width = 480;
@@ -20,6 +25,7 @@ function setSize() {
 	}
 	canvas.width = width;
 	canvas.height = height;
+	var streaming = false;
 }
 
 
@@ -35,11 +41,11 @@ function errorCallback(error) {
 }
 
 function toggleStream() {
-	var streaming = !streaming;
-	if (streaming === true) {
+	if (streaming == false) {
 		navigator.getUserMedia(constraints, successCallback, errorCallback);
 		document.getElementById('toggleStream').innerHTML = 'Stop';
 		document.getElementById('cvtGray').style.visibility = 'visible';
+		streaming = true;
 	} else {
 		const stream = video.srcObject;
 		const tracks = stream.getTracks();
@@ -48,6 +54,7 @@ function toggleStream() {
 		});
 		document.getElementById('toggleStream').innerHTML = 'Play';
 		document.getElementById('cvtGray').style.visibility = 'hidden';
+		streaming = false;
 	}
 	
 }
