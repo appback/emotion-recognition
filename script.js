@@ -1,3 +1,15 @@
+
+const constraints = {
+	video: { facingMode: 'user' },
+	audio: false,
+};
+const video = document.getElementById('video');
+const canvas = document.getElementById('output');
+canvas.width = width;
+canvas.height = height;
+
+var streaming, src, dist, cap;
+
 function setSize() {
 	if (window.orientation == 0) {
 		//portrait
@@ -9,14 +21,7 @@ function setSize() {
 		height = 480;
 	}
 }
-const constraints = {
-	video: { facingMode: 'user' },
-	audio: false,
-};
-const video = document.getElementById('video');
-const canvas = document.getElementById('output');
-canvas.width = width;
-canvas.height = height;
+
 
 function successCallback(stream) {
 	video.width = width;
@@ -29,9 +34,9 @@ function errorCallback(error) {
 	console.log(error);
 }
 
-let streaming = false;
 function toggleStream() {
-	if (streaming === false) {
+	var streaming = !streaming;
+	if (streaming === true) {
 		navigator.getUserMedia(constraints, successCallback, errorCallback);
 		document.getElementById('toggleStream').innerHTML = 'Stop';
 		document.getElementById('cvtGray').style.visibility = 'visible';
@@ -44,14 +49,13 @@ function toggleStream() {
 		document.getElementById('toggleStream').innerHTML = 'Play';
 		document.getElementById('cvtGray').style.visibility = 'hidden';
 	}
-	streaming = !streaming;
+	
 }
 
-let src, dist, cap;
 function cvtGray() {
-	src = new cv.Mat(height, width, cv.CV_8UC4);
-	dst = new cv.Mat(height, width, cv.CV_8UC1);
-	cap = new cv.VideoCapture('video');
+	var src = new cv.Mat(height, width, cv.CV_8UC4);
+	var dst = new cv.Mat(height, width, cv.CV_8UC1);
+	var cap = new cv.VideoCapture('video');
 	setTimeout(process, 33);
 }
 
