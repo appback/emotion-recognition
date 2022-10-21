@@ -1,26 +1,6 @@
-$(document).ready(function () {
-	$('#doc').text('문서가 전부 로드됐어요!');
-});
+window.onload = function () {
 
-$(window).load(function () {
-	$('#win').text('창이 모두 로드됐어요!');
-});
-
-$(function () {
-	/* $("#ptag").click(function() {
-		alert('click');
-	});
-	
-	$("button").click(function() {
-		alert("button click");
-	});
-	$("#ptag").on("click", function () {
-		alert("p tag");
-	});
-	 */
-	// 자바스크립트 function불러오기  ()없음
-	$('button').on('click', buttonClick);
-});
+};
 
 function setSize() {
 	if (window.orientation == 0) {
