@@ -170,14 +170,15 @@
 
 		function onOpenCvReady() {
 			cv['onRuntimeInitialized'] = () => {
-				faces = new cv.RectVector();
-				classifier = new cv.CascadeClassifier();
-				utils = new Utils('errorMessage');
-				let faceCascadeFile = 'haarcascade_frontalface_default.xml'; // path to xml
-				utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
-					classifier.load(faceCascadeFile); // in the callback, load the cascade from file
-					document.getElementById('status').innerHTML =
-						'데이터 로딩이 완료되었습니다. 이제 변환할 사진을 업로드 하세요.';
+				alert("준비완료");
+				// faces = new cv.RectVector();
+				// classifier = new cv.CascadeClassifier();
+				// utils = new Utils('errorMessage');
+				// let faceCascadeFile = 'haarcascade_frontalface_default.xml'; // path to xml
+				// utils.createFileFromUrl(faceCascadeFile, faceCascadeFile, () => {
+				// 	classifier.load(faceCascadeFile); // in the callback, load the cascade from file
+				// 	document.getElementById('status').innerHTML =
+				// 		'데이터 로딩이 완료되었습니다. 이제 변환할 사진을 업로드 하세요.';
 					// document.getElementById('loader').style.display = 'none';
 					// document.getElementById('imageSrc').src = 'face.jpg';
 				});
